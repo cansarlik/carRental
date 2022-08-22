@@ -1,4 +1,4 @@
-package com.example.carRental.persistence.entity
+package com.example.carRental.persistence.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class Car {
     private Color color;
 
     @Column(name="model_year")
-    private short modelYear;
+    private int modelYear;
 
     @Column(name="daily_price")
     private int dailyPrice;
