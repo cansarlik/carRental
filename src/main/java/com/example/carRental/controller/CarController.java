@@ -15,6 +15,7 @@ public class CarController {
     private CarService carService;
 
     public CarController(CarService carService) {
+
         this.carService = carService;
     }
 
@@ -25,10 +26,19 @@ public class CarController {
 
     @PostMapping("/save")
     private void save(@RequestBody Car car){
+
         carService.save(car);
     }
 
+    @PutMapping("/update")
+    private CarDto update(@RequestBody Car car){
+        return carService.update(car);
+    }
 
+    @DeleteMapping("/delete")
+    private void delete(@RequestBody Car car){
+        carService.delete(car);
+    }
 
 
 }

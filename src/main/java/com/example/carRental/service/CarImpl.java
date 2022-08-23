@@ -2,7 +2,6 @@ package com.example.carRental.service;
 
 import com.example.carRental.persistence.entity.Car;
 import com.example.carRental.persistence.repository.CarRepo;
-import com.example.carRental.service.CarService;
 import com.example.carRental.service.dto.CarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CarServiceImpl implements CarService {
+public class CarImpl implements CarService {
     @Autowired
     private CarRepo carrepo;
 
-    public CarServiceImpl(CarRepo carrepo) {
+    public CarImpl(CarRepo carrepo) {
 
         this.carrepo = carrepo;
     }
@@ -34,6 +33,17 @@ public class CarServiceImpl implements CarService {
     @Override
     public void save(Car car) {
         carrepo.save(car);
+    }
+
+    @Override
+    public CarDto update(Car car) {
+        return entityToDto(carrepo.save(car));
+    }
+
+    @Override
+    public void delete(Car car) {
+        carrepo.delete(car);
+
     }
 
     private CarDto entityToDto(Car car) {
