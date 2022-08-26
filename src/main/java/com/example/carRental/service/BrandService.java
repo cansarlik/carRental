@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface BrandService {
     List<BrandDto> getAll();
-    void save(Brand brand);
-    BrandDto update(Brand  brand);
-    void delete(Brand brand);
+    void save(BrandDto branddto);
+    //BrandDto update(BrandDto  branddto);
+    void delete(BrandDto branddto);
 }
 
 

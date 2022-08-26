@@ -31,22 +31,28 @@ public class ColorImpl implements ColorService {
         return colorDtoList;
     }
     @Override
-    public void save(Color color) {
-
+    public void save(ColorDto colordto) {
+        Color color = dtoToEntity(colordto);
         colorrepo.save(color);
     }
     @Override
-    public ColorDto update(Color color){
+    public ColorDto update(ColorDto colordto){
+        Color  color = dtoToEntity(colordto);
         return entityToDto(colorrepo.save(color));
     }
     @Override
-    public void delete(Color  color){
+    public void delete(ColorDto  colordto){
+        Color color  =  dtoToEntity(colordto);
         colorrepo.delete(color);
     }
     private ColorDto  entityToDto(Color  color){
         ColorDto colordto =  new ColorDto();
         colordto.setName(color.getName());
-        colordto.setId(color.getId());
         return colordto;
+    }
+    private Color  dtoToEntity(ColorDto  colordto){
+        Color color =  new Color();
+        color.setName(colordto.getName());
+        return color;
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ColorService {
     List<ColorDto> getAll();
-    void save(Color  color);
-    ColorDto  update(Color  color);
-    void delete(Color color);
+    void save(ColorDto  colordto);
+    ColorDto  update(ColorDto  colordto);
+    void delete(ColorDto colordto);
 }

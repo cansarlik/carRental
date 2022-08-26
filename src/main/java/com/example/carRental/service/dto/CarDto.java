@@ -11,5 +11,4 @@ public class CarDto {
     private int modelYear;
     private int dailyPrice;
     private String description;
-
 }

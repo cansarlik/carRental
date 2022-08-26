@@ -26,17 +26,17 @@ public class ColorController {
     }
 
     @PostMapping("/save")
-    public void save(@RequestBody Color color) {
-        colorService.save(color);
+    public void save(@RequestBody ColorDto colordto) {
+        colorService.save(colordto);
     }
 
     @PutMapping("/update")
-    private ColorDto update(@RequestBody Color color) {
-        return colorService.update(color);
+    private ColorDto update(@RequestBody ColorDto colordto) {
+        return colorService.update(colordto);
     }
 
     @DeleteMapping("/delete")
-    private void delete(@RequestBody Color color) {
-        colorService.delete(color);
+    private void delete(@RequestBody ColorDto colordto) {
+        colorService.delete(colordto);
     }
 }
