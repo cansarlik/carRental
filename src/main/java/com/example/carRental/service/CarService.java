@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CarService {
         List<CarDto> getAll();
-        void save(Car car);
-        CarDto update(Car  car);
-        void delete(Car  car);
+        void save(CarDto cardto);
+        CarDto update(CarDto  cardto);
+        void delete(CarDto  cardto);
 }

@@ -25,19 +25,18 @@ public class CarController {
     }
 
     @PostMapping("/save")
-    private void save(@RequestBody Car car){
-
-        carService.save(car);
+    private void save(@RequestBody CarDto cardto){
+        carService.save(cardto);
     }
 
     @PutMapping("/update")
-    private CarDto update(@RequestBody Car car){
-        return carService.update(car);
+    private CarDto update(@RequestBody CarDto cardto){
+        return carService.update(cardto);
     }
 
     @DeleteMapping("/delete")
-    private void delete(@RequestBody Car car){
-        carService.delete(car);
+    private void delete(@RequestBody CarDto cardto){
+        carService.delete(cardto);
     }
 
 

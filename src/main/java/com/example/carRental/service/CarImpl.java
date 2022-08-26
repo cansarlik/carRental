@@ -1,7 +1,9 @@
 package com.example.carRental.service;
 
 import com.example.carRental.persistence.entity.Car;
+import com.example.carRental.persistence.repository.BrandRepo;
 import com.example.carRental.persistence.repository.CarRepo;
+import com.example.carRental.persistence.repository.ColorRepo;
 import com.example.carRental.service.dto.CarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +15,15 @@ import java.util.List;
 public class CarImpl implements CarService {
     @Autowired
     private CarRepo carrepo;
+    @Autowired
+    private ColorRepo colorrepo;
+    @Autowired
+    private BrandRepo brandrepo;
 
-    public CarImpl(CarRepo carrepo) {
-
+    public CarImpl(CarRepo carrepo, ColorRepo colorrepo, BrandRepo brandrepo) {
         this.carrepo = carrepo;
+        this.colorrepo = colorrepo;
+        this.brandrepo = brandrepo;
     }
 
     @Override
@@ -31,17 +38,20 @@ public class CarImpl implements CarService {
     }
 
     @Override
-    public void save(Car car) {
+    public void save(CarDto cardto) {
+        Car car = dtoToEntity(cardto);
         carrepo.save(car);
     }
 
     @Override
-    public CarDto update(Car car) {
+    public CarDto update(CarDto cardto) {
+        Car car = dtoToEntity(cardto);
         return entityToDto(carrepo.save(car));
     }
 
     @Override
-    public void delete(Car car) {
+    public void delete(CarDto cardto) {
+        Car car = dtoToEntity(cardto);
         carrepo.delete(car);
 
     }
@@ -54,5 +64,14 @@ public class CarImpl implements CarService {
         cardto.setBrandName(car.getBrand().getName());
         cardto.setColorName(car.getColor().getName());
         return cardto;
+    }
+    private Car dtoToEntity(CarDto cardto) {
+        Car car= new Car();
+        car.setDescription(cardto.getDescription());
+        car.setModelYear(cardto.getModelYear());
+        car.setDailyPrice(cardto.getDailyPrice());
+        car.setBrand(brandrepo.findByName(cardto.getBrandName()));
+        car.setColor(colorrepo.findByName(cardto.getColorName()));
+        return car;
     }
 }

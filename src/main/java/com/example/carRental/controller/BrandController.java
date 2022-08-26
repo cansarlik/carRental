@@ -22,17 +22,15 @@ public class BrandController {
         return brandService.getAll();
     }
     @PostMapping("/save")
-    public void save(@RequestBody Brand brand) {
-        brandService.save(brand);
+    public void save(@RequestBody BrandDto branddto) {
+        brandService.save(branddto);
     }
-
-    @PutMapping("/update")
-    private BrandDto update(@RequestBody Brand brand) {
-        return brandService.update(brand);
-    }
-
+    //@PutMapping("/update")
+   // private BrandDto update(@RequestBody BrandDto branddto) {
+   //     return brandService.update(branddto);
+    //}
     @DeleteMapping("/delete")
-    private void delete(@RequestBody Brand brand) {
-        brandService.delete(brand);
+    private void delete(@RequestBody BrandDto branddto) {
+        brandService.delete(branddto);
     }
 }
